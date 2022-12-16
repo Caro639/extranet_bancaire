@@ -1,0 +1,105 @@
+#bloc-page
+{
+	width: 900px;
+	margin: auto;
+}
+
+body
+{
+	background-color: silver;
+	color: black;
+}
+
+header
+{
+	background-color: whitesmoke;
+	border-bottom: 5px rgb(255, 0, 0) solid;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#profil
+{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+}
+
+#profil
+{
+	width: 30px;
+	height: 30px;
+}
+
+#logo
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: baseline;
+}
+
+#logo
+{
+	width: 80px;
+	height: 80px;
+}
+
+section
+{
+	width: 900px;
+	margin: auto;
+	margin-top: 25px;
+	padding: 10px;
+}
+
+h1
+{
+	background-color: rgb(255, 0, 0);
+}
+
+#groupes_bancaires
+{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border: rgb(255, 0, 0) solid;
+	background-color: whitesmoke;
+}
+
+h2
+{
+	background-color: rgb(255, 0, 0);	
+}
+
+#partenaires
+{
+	display: flex;
+	margin-bottom: 20px;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: baseline;
+	border: rgb(255, 0, 0) solid;
+}
+
+#partenaires,img
+{
+	background-color: whitesmoke;
+	margin-left: 15px;
+}
+
+footer
+{
+	background-color: whitesmoke;
+	border-top: 5px rgb(255, 0, 0) solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+
+
+
+
