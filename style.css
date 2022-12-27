@@ -60,6 +60,11 @@ h1
 	background-color: rgb(255, 0, 0);
 }
 
+.partenaires
+{
+	background-color: silver;
+}
+
 #groupes_bancaires
 {
 	display: flex;
@@ -74,20 +79,20 @@ h2
 	background-color: rgb(255, 0, 0);	
 }
 
-#partenaires
+h3
+{
+	background-color: rgb(255, 0, 0);	
+}
+
+#partenaires h2
 {
 	display: flex;
 	margin-bottom: 20px;
 	flex-direction: column;
 	justify-content: space-around;
-	align-items: baseline;
+	align-items: center;
 	border: rgb(255, 0, 0) solid;
-}
-
-#partenaires,img
-{
 	background-color: whitesmoke;
-	margin-left: 15px;
 }
 
 footer
@@ -97,6 +102,25 @@ footer
 	display: flex;
 	justify-content: center;
 	align-items: center;	
+}
+
+ #partenaires a
+{
+	background-color: whitesmoke;
+	color: black;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+h3
+{
+	background-color: rgb(255, 0, 0);
+}
+
+#posts
+{
+	background-color: silver;
+	border: rgb(255, 0, 0) solid;
 }
 
 
