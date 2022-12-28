@@ -22,7 +22,7 @@
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </div>
 </form>
-
+<?php include_once('connexion.php'); ?>
 <?php
 $postData = $_POST;
 

@@ -11,12 +11,8 @@
     <body>
 
         <?php
-            try {
-                $mysqlClient = new PDO('mysql:host=localhost;dbname=extranet_gbaf;charset=utf8', 'root', 'root', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],);
-            }
-            catch(Exception $e) {
-                die('Erreur : '.$e->getMessage());
-            }
+            include_once('connexion.php');
+
             $sqlQuery = 'SELECT * FROM acteur';
             $acteurStatement = $mysqlClient->prepare($sqlQuery);
             $acteurStatement->execute();
@@ -27,13 +23,13 @@
             
                 <!-- header -->
             <?php include('header.php'); ?>
-
+        <section>
+            <div id="connecter">
                 <!-- formulaire de connexion au site -->
-    <?php include_once('login.php'); ?> 
+        <?php include_once('login.php'); ?>
+            </div>
+        </section>
 
-    <?php if(!isset($loggedAccount)): ?>
-        <?php include_once('index.php'); ?>
-    
     <section>  <!-- présentation -->
         <h1>Groupement Banque Assurance Français</h1>
                 <br />
@@ -66,9 +62,15 @@
             </div>
 
             <div id="partenaires">
+            <?php
+            $sqlQuery = 'SELECT * FROM account';
+                $accountStatement = $mysqlClient->prepare($sqlQuery);
+                $accountStatement->execute();
+                $accounts = $accountStatement->fetchAll();
+            ?>
 
             <?php include('variables.php'); ?>
-
+            <?php if(isset($account)): ?>
             <?php foreach ($acteurs as $acteur) { ?>
                 <h2><?php echo $acteur['acteur']; ?></h2>
                

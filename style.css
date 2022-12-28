@@ -117,11 +117,21 @@ h3
 	background-color: rgb(255, 0, 0);
 }
 
-#posts
+#posts p
 {
-	background-color: silver;
-	border: rgb(255, 0, 0) solid;
+	border: black solid 1px;
 }
+
+#commentaire button
+{
+	border: black solid 0.5px;
+}
+
+section connecter
+{
+	justify-content: center;
+}
+
 
 
 

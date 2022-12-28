@@ -1,60 +1,58 @@
 
-<?php include('variables.php'); ?>
+    <?php include('variables.php')?>
+            <?php
+                include_once('connexion.php');
+                $sqlQuery = 'SELECT * FROM account';
+                $accountStatement = $mysqlClient->prepare($sqlQuery);
+                $accountStatement->execute();
+                $accounts = $accountStatement->fetchAll();
+            ?>
+            
+                <?php
+                if (isset($_POST['username']) && isset($_POST['password'])) {
+                    foreach ($accounts as $account) {
+                        if (
+                            $account['username'] === $_POST['username'] &&
+                            $account['password'] === $_POST['password']
+                        ) {
+                            $_SESSION['ID_USER'] = $account['username'];
 
-<?php
-$postData = $_POST;
-$postData = $account;
-if (isset($postData['username']) && isset($postData['password'])) {
-    foreach ($accounts as $account) {
-        if (
-            $account['username'] === $postData['username'] &&
-            $account['password'] === $postData['password']
-        ) {
-            $loggedAccount = [
-                'username' => $account['username'],
-                ];
+                                /**
+                                 * cookie 
+                                 */
+                                setcookie(
+                                    'ACCOUNT',
+                                    $account['username'],
+                                    [
+                                        'expires' => time() + 365*24*3600,
+                                        'secure' => true,
+                                        'httponly' => true,
+                                    ]
+                                    );
 
-                /**
-                 * cookie 
-                 */
-                setcookie(
-                    'LOGGED_ACCOUNT',
-                    $loggedAccount['username'],
-                    [
-                        'expires' => time() + 365*24*3600,
-                        'secure' => true,
-                        'httponly' => true,
-                    ]
-                    );
-
-                    $_SESSION['LOGGED_ACCOUNT'] = $loggedAccount['username'];
+                    $_SESSION['ACCOUNT'] = $account['username'];
                 } else {
                      $errorMessage = sprintf('Les informations envoyées ne permettent pas de vous identifier : (%s/%s)',
-                        $postData['username'],
-                        $postData['password']
+                        $_POST['username'],
+                        $_POST['password']
                     );
             }
         }
 
     }
 
-    
-    
-
-    // si cookie present ou session
-    if (isset($_COOKIE['LOGGED_ACCOUNT']) || isset($_SESSION['LOGGED_ACCOUNT'])) {
-        $loggedAccount = [
-            'username' => $_COOKIE['LOGGED_ACCOUNT'] ?? $_SESSION['LOGGED_ACCOUNT'],
+    if (isset($_COOKIE['ACCOUNT']) || isset($_SESSION['ACCOUNT'])) {
+        $account = [
+            'username' => $_COOKIE['ACCOUNT'] ?? $_SESSION['ACCOUNT'],
         ];
     }
 ?>
 
 
-//sinon se connecter
-
-<?php if(!isset($loggedAccount)): ?>
+    <!-- sinon se connecter -->
+<section>
+<?php if(!isset($account)): ?>
     <form action="index.php" method="post">
-
     <?php if(isset($errorMessage)) : ?>
         <div class="alert alert-danger" role="alert">
             <?php echo ($errorMessage); ?>
@@ -74,11 +72,12 @@ if (isset($postData['username']) && isset($postData['password'])) {
 
     <?php else: ?>
         <div class="alert alert-success" role="alert">
-            GBAF <?php echo $loggedAccount['username']; ?> vous souhaite la bienvenue !
+            GBAF vous souhaite la bienvenue !
         </div>
 <?php endif; ?>
 
-// sinin creer un compte
+
+    <!--sinin creer un compte -->
 <?php if(isset($errorMessage)) : ?>
     <div class="alert alert-danger" role="alert">
         <?php echo $errorMessage; ?>
@@ -112,6 +111,7 @@ if (isset($postData['username']) && isset($postData['password'])) {
                         </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
+</section>
 
 
 

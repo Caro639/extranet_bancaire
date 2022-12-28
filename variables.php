@@ -1,3 +1,5 @@
+
+<?php include_once('connexion.php'); ?>
 <?php
     $acteurs2 = [
          [
@@ -29,13 +31,23 @@
     $account = [
         [
             'id_user' => '1',
-            'nom' => '',
-            'prenom' => '',
-            'username' => '',
-            'password' => '*******',
-            'question' => 'veuillez choisir une question secrète',
-            'reponse' => 'veuillez écrire la réponse à votre question',
+            'nom' => 'Werner',
+            'prenom' => 'Carole',
+            'username' => 'Caro63',
+            'password' => 'admin63',
+            'question' => 'Quel est mon animal domestique ?',
+            'reponse' => 'Chien cané corso',
         ],
+
+        [
+            'id_user' => '1',
+            'nom' => 'Werner',
+            'prenom' => 'Alicia',
+            'username' => 'Alicia63',
+            'password' => 'admin14',
+            'question' => 'Quel est mon animal domestique ?',
+            'reponse' => 'Chien',
+        ]
     ];
 
     $post = [
@@ -43,8 +55,8 @@
             'id_post' => '1',
             'id_user' => 'username',
             'id_acteur' => '1',
-            'date_add' => '12.12.2022',
-            'post' => 'Parfait !',
+            'date_add' => '',
+            'post' => '',
             'is_enabled' => true,
         ],
     ];
@@ -56,6 +68,37 @@
             'vote' => '',
         ],
     ];
+
+    $_SESSION = [
+        [
+            'id_user' => '1',
+            'username' => '',
+            'password' => '',
+        ]
+        ];
+
+    $_COOKIE = [
+        [
+            'id_user' => '1',
+            'username' => '',
+            'password' => '',
+        ]
+        ];
+
+    $isAllowedToEnter = [
+        [
+            'id_user' => '1',
+            'username' => '',
+            'password' => '',
+            'is_enabled' => 'true',
+        ]
+        ];
+
+    if(isset($_POST['limit']) && is_numeric($_POST['limit'])) {
+        $limit = (int) $_POST['limit'];
+    } else {
+        $limit = 100;
+    }
 
     ?>
 

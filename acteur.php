@@ -1,16 +1,5 @@
 <?php session_start(); ?>
 
-<?php
-try
-{
-    $mysqlClient = new PDO('mysql:host=localhost;dbname=extranet_gbaf;charset=utf8', 'root', 'root', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],);
-}
-catch(Exception $e)
-{
-        die('Erreur : '.$e->getMessage());
-}
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,13 +16,14 @@ catch(Exception $e)
 
         <section> <!--le partenaire-->
             <div id="partenaire">
-
-
                 <?php
-                $idActeur = $_GET['id'];
-                $sqlQuery = 'SELECT * FROM acteur WHERE id_acteur=' . $idActeur;
+                include_once('connexion.php');
+                $idActeur = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+                $sqlQuery = 'SELECT * FROM acteur WHERE id_acteur=:idActeur;';
                 $acteurStatement = $mysqlClient->prepare($sqlQuery);
-                $acteurStatement->execute();
+                $acteurStatement->execute(array(
+                    ':idActeur' => $idActeur,
+                ));
                 $acteur = $acteurStatement->fetch();
                 ?>
                     <h2><?php echo $acteur['acteur']; ?></h2>
@@ -46,7 +36,7 @@ catch(Exception $e)
             </div>
             
         </section>
-
+             <section>
         <article> <!--les commentaires-->
                  <h2>Commentaires</h2>
 
@@ -57,17 +47,28 @@ catch(Exception $e)
             <div id="posts">
 
             <?php include('variables.php'); ?>
-
-            <?php foreach ($posts as $post);?>
-
-            <i><?php echo $post ['username']; ?></i>
-            <p><?php echo $post ['date_add']; ?></p>
-            <p><?php echo $post ['post']; ?></p>
-
+            <?php
+                $sqlQuery = 'SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE id_acteur=:idActeur;';
+                $queryStatement = $mysqlClient->prepare($sqlQuery);
+                $queryStatement->execute(array(
+                    ':idActeur' => $idActeur,
+                ));
+                $posts = $queryStatement->fetchAll();
+                ?>
+            <?php foreach($posts as $post) { ?>
+            <?php /* print_r($post); */ ?>   
+            <i><?php echo $post['username']; ?></i>
+            <i><?php echo $post['prenom']; ?></i>
+            <i><?php echo $post['date_add']; ?></i>
+            <p><?php echo $post['post']; ?></p>
+                <?php } ?>
         </div>
             
         </article>
-        
+            </section>
+
+
+
         <?php include('footer.php'); ?>
     
     </body>
