@@ -50,16 +50,15 @@
         ]
     ];
 
-    $post = [
+    $_POST = [
         [
-            'id_post' => '1',
-            'id_user' => 'username',
-            'id_acteur' => '1',
-            'date_add' => '',
-            'post' => '',
-            'is_enabled' => true,
-        ],
-    ];
+            'account' => 'id_user',
+            'username' => '',
+            'password' > '',
+        ]
+        ];
+
+
 
     $vote = [
         [
@@ -69,30 +68,6 @@
         ],
     ];
 
-    $_SESSION = [
-        [
-            'id_user' => '1',
-            'username' => '',
-            'password' => '',
-        ]
-        ];
-
-    $_COOKIE = [
-        [
-            'id_user' => '1',
-            'username' => '',
-            'password' => '',
-        ]
-        ];
-
-    $isAllowedToEnter = [
-        [
-            'id_user' => '1',
-            'username' => '',
-            'password' => '',
-            'is_enabled' => 'true',
-        ]
-        ];
 
     if(isset($_POST['limit']) && is_numeric($_POST['limit'])) {
         $limit = (int) $_POST['limit'];

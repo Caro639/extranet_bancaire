@@ -1,37 +1,15 @@
-<?php session_start(); ?>
-<?php include_once('connexion.php'); ?>
-<?php include('variables.php'); ?>
-<?php
-$isAllowedToEnter = "true";
-function isAllowedToEnter(array $account) : bool
-{
-    if (array_key_exists('is_enabled', $account)) {
-        $isEnabled = $account['is_enabled'];
-    } else {
-        $isEnabled = false;
-    }
-    return $isEnabled;
-}
-
-// si on a l'autorisation d'entrer
-if ($isAllowedToEnter == "true") {
-    echo "GBAF vous souhaite la bienvenue !";
-    // instru à executer acces au site
-}
-    // si autorisation fausse alors
-elseif ($isAllowedToEnter == "false") {
-    echo "Veuillez-vous connecter !";
-    // on execute le msg de se créer un compte
-}
-    // sinon la variable n'affiche ni oui ni non alors
-else {
-    echo "Veuillez-vous connecter ou créer votre compte, s'il vous plaît !";
-}
-?>
-
-
 // verifier post
 <?php
+
+
+
+
+
+
+
+
+
+
 
 function isValidPost(array $post) : bool
 {

@@ -1,5 +1,4 @@
-<?php session_start(); ?>
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,26 +9,36 @@
 
     <body>
 
+    
+    <div id="bloc_page">
+            
+            <!-- header -->
+        <?php include('header.php'); ?>
         <?php
             include_once('connexion.php');
+            if(isset($_GET['deconnexion']))
+    {
+        if($_GET['deconnexion']==true)
+        {
+            session_unset();
+            header('location:connecter.php');
+        }
+    }
+    else if($_SESSION['username'] !== "")
+    {
+        $user = $_SESSION['username'];
+        echo "<br>Bienvenue $user sur le site de la GBAF, vous êtes connectés !";
+    }
+    ?>
+        <a href='index.php?deconnexion=true'><span>Se déconnecter</span></a>
 
+        <?php
             $sqlQuery = 'SELECT * FROM acteur';
             $acteurStatement = $mysqlClient->prepare($sqlQuery);
             $acteurStatement->execute();
             $acteurs = $acteurStatement->fetchAll();
         ?>
-
-        <div id="bloc_page">
-            
-                <!-- header -->
-            <?php include('header.php'); ?>
-        <section>
-            <div id="connecter">
-                <!-- formulaire de connexion au site -->
-        <?php include_once('login.php'); ?>
-            </div>
-        </section>
-
+ 
     <section>  <!-- présentation -->
         <h1>Groupement Banque Assurance Français</h1>
                 <br />
@@ -70,7 +79,6 @@
             ?>
 
             <?php include('variables.php'); ?>
-            <?php if(isset($account)): ?>
             <?php foreach ($acteurs as $acteur) { ?>
                 <h2><?php echo $acteur['acteur']; ?></h2>
                
@@ -79,7 +87,7 @@
                 <p><?php echo $acteur['description']; ?></p>
                 <p><a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>" class="button">Lire la suite</a></p>
             <?php } ?>
-            <?php endif; ?>
+    
 
             </div>
     </section>
