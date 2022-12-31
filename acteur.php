@@ -42,6 +42,9 @@
 
                 <div id="commentaire">
                 <button><a href="post.php" type="href" class="btn btn-primary">Nouveau<br />commentaire</a></button>
+                <button><a href="action.php?id=1&id=<?= $idActeur?>"><img src="images/like.png" /></a></button> (15)
+                <br />
+                <button><a href="action.php?id=2&id=<?= $idActeur ?>"><img src="images/dislike.png" />je n'aime pas</a></button> (2)
 
                 </div>
             <div id="posts">

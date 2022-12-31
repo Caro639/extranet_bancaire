@@ -124,7 +124,9 @@ h3
 
 #commentaire button
 {
-	border: black solid 0.5px;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
 }
 
 #container
@@ -178,6 +180,13 @@ input[type=submit]:hover
 	border: 1px solid black;
 }
 
+#commentaire img
+{
+	display: flexbox;
+	flex-direction: row;
+	align-items: flex-end;
+
+}
 
 
 

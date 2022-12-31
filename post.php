@@ -9,36 +9,30 @@
 
     <body>
     <div id="bloc_page">
-            
-            <!-- header -->
-        <?php include('header.php'); ?>
-
 <!-- creation d'un formulaire pour commenter un acteur -->
 
+<?php include('header.php'); ?>
+<div id="container">
+
 <form action="submit_post.php" method="POST">
-    <div class="post">
-        <label for="post" class= "form-label">Nouveau commentaire</label>
-        <textarea class="form-control" placeholder="Votre commentaire" id="post" name="post" size= "200" maxlength="300"></textarea>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-    </div>
+    <h1>Nouveau commentaire</h1>
+
+    <label><b>Ecrivez votre commentaire</b></label>
+    <input type="text" placeholder="Ecrivez votre commentaire" name="post" size="100%" required>
+
+    <input type="submit" id='submit' value='ENVOYER'>
+    <?php
+    if(isset($_GET['erreur'])){
+        $err = $_GET['erreur'];
+        if($err==1 || $err==2)
+        echo "<p style='color:red'>Commentaire invalide</p>";
+    }
+    ?>
 </form>
-<?php include_once('connexion.php'); ?>
-<?php
-$postData = $_POST;
-
-if (!isset($postData['post']) )
-{
-        echo('Veuillez soumettre votre avis.');
-    return;
-}
-
-$post = $postData['post'];
-
-?>
-
+</div>
              <!-- footer -->
              <?php include('footer.php'); ?>
-        </div>
+    
     </body>
 </html>
 

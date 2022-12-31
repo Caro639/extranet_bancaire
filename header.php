@@ -16,11 +16,9 @@
 
                     <div id="profil">
                         <img src="images/profil.png" alt="Photo de profil" class="profil" />
-                        <form method="post" action="index.php">
-    
-                           
-                               <p> <label for="username"></label>
-                                <input type="text" name="username" id="username" placeholder= "username" <?php echo $account="username"; ?> size="30" maxlength="10" />
+   
+                         <p> <label for="username"></label>
+                                <input type="text" name="username" id="username" placeholder= "username" <?php echo $account="username"; ?> size="70" maxlength="40" />
                                 </p>   
                         
                     </div>

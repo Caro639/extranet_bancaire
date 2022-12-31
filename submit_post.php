@@ -1,25 +1,16 @@
 <?php session_start(); ?>
-<?php include_once('connexion.php'); ?>
-<h1>Votre commentaire a bien été pris en compte !</h1>
-<div class="card">
-    <div class="card-body">
-        <h2 class="card-title">Rappel de votre demande</h2>
-        <p class="card-text"><b>Pseudo</b> : <?php echo $_POST['username']; ?></p>
-        <p class="card-text"><b>Commentaire</b> : <?php echo $_POST['post']; ?></p>
-    </div>
-</div>
+<?php include_once('connexion.php');
 
-<?php
-$postData = $_POST;
-
-if (!isset($postData['post']) )
-{
-        echo('Veuillez soumettre votre avis.');
-    return;
+if(isset($_POST['post']) && !empty($_POST['post'])) {
+    $sqlQuery = "INSERT * INTO post LEFT JOIN account ON post.id_user = account.id_user WHERE id_acteur=:idActeur VALUES (:id_post)";
+    $queryStatement = $mysqlClient->prepare($sqlQuery);
+    $queryStatement->execute(array(
+        ':idActeur' => $idActeur,)); 
+        {
+            $posts= $queryStatement;
+            $posts = 'Commentaire envoyé';
+        }
 }
-
-$post = $postData['post'];
-
 ?>
 
 

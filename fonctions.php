@@ -1,16 +1,5 @@
 // verifier post
 <?php
-
-
-
-
-
-
-
-
-
-
-
 function isValidPost(array $post) : bool
 {
     if (array_key_exists('is_enabled', $post)) {
