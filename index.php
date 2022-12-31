@@ -16,18 +16,19 @@
         <?php include('header.php'); ?>
         <?php
             include_once('connexion.php');
+
             if(isset($_GET['deconnexion']))
-    {
-        if($_GET['deconnexion']==true)
+        {
+            if($_GET['deconnexion']==true)
         {
             session_unset();
             header('location:connecter.php');
         }
-    }
-    else if($_SESSION['username'] !== "")
+        }
+        else if($_SESSION['username'] !== "")
     {
-        $user = $_SESSION['username'];
-        echo "<br>Bienvenue $user sur le site de la GBAF, vous êtes connectés !";
+        $username = $_SESSION['username'];
+        echo " Bienvenue $username sur le site de la GBAF, vous êtes connectés !";
     }
     ?>
         <a href='index.php?deconnexion=true'><span>Se déconnecter</span></a>
@@ -71,12 +72,6 @@
             </div>
 
             <div id="partenaires">
-            <?php
-            $sqlQuery = 'SELECT * FROM account';
-                $accountStatement = $mysqlClient->prepare($sqlQuery);
-                $accountStatement->execute();
-                $accounts = $accountStatement->fetchAll();
-            ?>
 
             <?php include('variables.php'); ?>
             <?php foreach ($acteurs as $acteur) { ?>

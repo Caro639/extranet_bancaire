@@ -14,12 +14,12 @@ if (isset($_POST['inscription']) && $_POST['inscription'] == 'Inscription') {
 
     if($nom !== "" && $prenom !== "" && $username !== "" && $password !== "" && $question !== "" && $reponse !== "") {
 
-    $sqlQuery = 'INSERT INTO account VALUES (:nom, :prenom, :username, :password, :question, :reponse)';
+    $sqlQuery = 'INSERT INTO account (nom, prenom, username, password, question, reponse) VALUES (nom, prenom, username, password, question, reponse)';
     $queryStatement = $mysqlClient->prepare($sqlQuery);
     $queryStatement->execute(array(
         ':idUser' => $idUser,)); 
     }
-        if($account)
+        if($account!=0)
         {
             header('Location: index.php');
             $_SESSION = 'inscription réussie';

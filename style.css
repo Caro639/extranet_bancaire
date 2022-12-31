@@ -47,6 +47,13 @@ header
 	height: 80px;
 }
 
+#commentaire a
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: baseline;
+}
+
 section
 {
 	width: 900px;
@@ -68,6 +75,7 @@ h1
 #groupes_bancaires
 {
 	display: flex;
+	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
 	border: rgb(255, 0, 0) solid;
@@ -122,13 +130,6 @@ h3
 	border: black solid 1px;
 }
 
-#commentaire button
-{
-	display: flex;
-	flex-direction: row;
-	align-items: flex-end;
-}
-
 #container
 {
 	width: 900px;
@@ -180,13 +181,7 @@ input[type=submit]:hover
 	border: 1px solid black;
 }
 
-#commentaire img
-{
-	display: flexbox;
-	flex-direction: row;
-	align-items: flex-end;
 
-}
 
 
 

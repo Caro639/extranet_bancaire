@@ -9,7 +9,7 @@ function isValidPost(array $post) : bool
     }
     return $isEnabled;
 }
-//affiche nom date post
+//affiche nom date post une fois
 
 function displayUsername(string $usernamePost, array $account) : string
 {
@@ -23,14 +23,11 @@ function displayUsername(string $usernamePost, array $account) : string
 ?>
 
 // boucle for pour un seul post par acteur 
-    <ul>
+    
 <?php for ($post = 0; $post <= 1; $post++): ?>
-    <li><?php echo $post[$post][0] . ' (' . $_POST[$post][1] . ')'; ?></li>
+    <?php echo $post[$post][0] . ' (' . $_POST[$post][1] . ')'; ?>
 <?php endfor; ?>
-    </ul>
-
-//
-
+    
 //fonction date ajout posts
 <?php
 $day = date('d');

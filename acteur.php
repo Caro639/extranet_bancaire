@@ -41,11 +41,13 @@
                  <h2>Commentaires</h2>
 
                 <div id="commentaire">
+                <?php $votes = $idActeur ?>
                 <button><a href="post.php" type="href" class="btn btn-primary">Nouveau<br />commentaire</a></button>
-                <button><a href="action.php?id=1&id=<?= $idActeur?>"><img src="images/like.png" /></a></button> (15)
-                <br />
-                <button><a href="action.php?id=2&id=<?= $idActeur ?>"><img src="images/dislike.png" />je n'aime pas</a></button> (2)
 
+                <button><a href="action.php?id=idActeur.php?=1&id=<?= $votes?>"><img src="images/like.png" id=like/></a></button> (15)
+            
+                <button><a href="action.php?id=idActeur.php?=2&id=<?= $votes ?>"><img src="images/dislike.png" id=dislike /></a></button> (2)
+            
                 </div>
             <div id="posts">
 
