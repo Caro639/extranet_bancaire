@@ -7,9 +7,7 @@
         <title>GBAF</title>
     </head>
 
-    <body>
-
-    
+    <body>   
     <div id="bloc_page">
             
             <!-- header -->

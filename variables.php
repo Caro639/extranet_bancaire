@@ -52,9 +52,10 @@
 
     $_POST = [
         [
-            'account' => 'id_user',
-            'username' => '',
-            'password' > '',
+            'id_user' => 'username',
+            'id_acteur' => '',
+            'date_add' => '',
+            'post' => '',
         ]
         ];
 
@@ -63,17 +64,10 @@
     $vote = [
         [
             'id_user' => '1',
-            'id_acteur' => '1',
             'vote' => '',
+            'id_acteur' => '1',
         ],
     ];
-
-
-    if(isset($_POST['limit']) && is_numeric($_POST['limit'])) {
-        $limit = (int) $_POST['limit'];
-    } else {
-        $limit = 100;
-    }
 
     ?>
 

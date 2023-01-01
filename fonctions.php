@@ -27,7 +27,17 @@ function displayUsername(string $usernamePost, array $account) : string
 <?php for ($post = 0; $post <= 1; $post++): ?>
     <?php echo $post[$post][0] . ' (' . $_POST[$post][1] . ')'; ?>
 <?php endfor; ?>
-    
+
+
+ <?php   
+if(isset($_POST['limit']) && is_numeric($_POST['limit'])) {
+        $limit = (int) $_POST['limit'];
+    } else {
+        $limit = 100;
+    }
+    ?>
+
+
 //fonction date ajout posts
 <?php
 $day = date('d');

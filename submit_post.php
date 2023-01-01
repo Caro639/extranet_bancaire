@@ -2,16 +2,28 @@
 <?php include_once('connexion.php');
 
 if(isset($_POST['post']) && !empty($_POST['post'])) {
-    $sqlQuery = "INSERT INTO post LEFT JOIN account ON post.id_user = account.id_user WHERE id_acteur=:idActeur VALUES (post)";
-    $queryStatement = $mysqlClient->prepare($sqlQuery);
-    $queryStatement->execute(array(
-        ':idActeur' => $idActeur,)); 
+    $post = htmlspecialchars($_POST['post']);
+    if ($post !== "") { 
+        
+    
+    $sqlQuery = 'INSERT INTO post (post) LEFT JOIN account ON post.id_user = account.id_user WHERE id_acteur=:idActeur VALUES (:post)';
+    $insertPost = $mysqlClient->prepare($sqlQuery);
+    $insertPost->execute(array(
+        ':post' => $post,)); 
         {
-            $posts= $queryStatement;
+            $post= $insertPost;
             $post = 'Commentaire envoyé';
         }
 }
+} include('variables.php'); 
+    include('fonctions.php');
 ?>
 
 
 
+username' => $username,'idActeur' => $idActeur,
+
+, :date_ad(date(string $format [,int $timestamp = time(void)
+$dateAdd = $timestamp;
+
+'username' => $username, 'idActeur' => $idActeur,

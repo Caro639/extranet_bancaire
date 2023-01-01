@@ -1,0 +1,24 @@
+
+
+
+                      inscription.php => verifcompte.php = inscription
+`                                      |
+                                       |
+                                       |
+                   connecter.php => verification.php = se connecter
+                                       |
+                                       |  
+                                       | 
+                                       |
+                                       |
+                               index.php = page principale
+                                       |
+                                       |
+                                       |
+                                       |
+post.php = écrire un commentaire----acteur.php ---------liens like-dislike
+              |                                                    |                             
+              |                                                    |
+              |                                                    |
+   submit_post.php = verifier post                          action.php = get like
+
