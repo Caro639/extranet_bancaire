@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,19 +15,23 @@
 <?php include('header.php'); ?>
 <div id="container">
 
-<form action="submit_post.php" method="POST">
+    <?php include_once('connexion.php');?>
+                
+     <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?> 
+    <form action="submit_post.php?id=<?php echo $id?>" method="POST"> 
     <h1>Nouveau commentaire</h1>
 
     <label><b>Ecrivez votre commentaire</b></label>
     <input type="text" placeholder="Ecrivez votre commentaire" name="post" size="100%" required>
 
-    <input type="submit" id='submit' value='ENVOYER'>
+    <input type="submit" id='submit' value='ENVOYER'> 
     <?php
     if(isset($_GET['erreur'])){
         $err = $_GET['erreur'];
         if($err==1 || $err==2)
         echo "<p style='color:red'>Commentaire invalide</p>";
     }
+    
     ?>
 </form>
 </div>

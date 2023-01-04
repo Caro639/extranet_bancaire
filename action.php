@@ -12,12 +12,12 @@ if(isset($_GET['vote']) AND !empty($_GET['vote'])) {
 
     if($vote->$count == 1){
         if($gett == 1) {
-           $queryStatement = 'INSERT COUNT(*) INTO vote LEFT JOIN account ON vote.id_user = account.id_user WHERE id_acteur=:idActeur VALUES (?)';
+           $queryStatement = 'INSERT COUNT(*) INTO vote LEFT JOIN account WHERE vote.id_user = account.id_user AND id_acteur=:idActeur VALUES (?)';
            $queryStatement = $mysqlClient->prepare($sqlQuery);
            $queryStatement->execute(array(':vote' => $vote,));
 
         } elseif($gett == 2) {
-           $queryStatement = 'INSERT COUNT(*) INTO vote LEFT JOIN account ON vote.id_user = account.id_user WHERE id_acteur=:idActeur VALUES (?)';
+           $queryStatement = 'INSERT COUNT(*) INTO vote LEFT JOIN account WHERE vote.id_user = account.id_user AND id_acteur=:idActeur VALUES (?)';
            $queryStatement = $mysqlClient->prepare($sqlQuery);
            $queryStatement->execute(array(':vote' => $vote,));
         }

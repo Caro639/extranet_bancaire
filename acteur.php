@@ -41,12 +41,13 @@
                  <h2>Commentaires</h2>
 
                 <div id="commentaire">
+                <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);?>
+                <button><a href="post.php?id=<?php echo $id?>" type="href" class="btn btn-primary">Nouveau<br />commentaire</a></button>
+
+                <?php $votes = 1 ?>
+                <button><a href="action.php?id=1&votes=<?php echo $votes?>"><img src="images/like.png" id=like/></a></button> (15) (<?= $votes ?>)
             
-                <button><a href="post.php" type="href" class="btn btn-primary">Nouveau<br />commentaire</a></button>
-                <?php $votes = $queryStatement?>
-                <button><a href="action.php?acteur.php?id=.php?=1&votes=<?= $votes?>"><img src="images/like.png" id=like/></a></button> (15) (<?= $votes ?>)
-            
-                <button><a href="action.php?id=idActeur.php?=2&votes=<?= $votes ?>"><img src="images/dislike.png" id=dislike /></a></button> (2) (<?= $votes ?>)
+                <button><a href="action.php?id=2&votes=<?php echo $votes ?>"><img src="images/dislike.png" id=dislike /></a></button> (2) (<?= $votes ?>)
             
                 </div>
             <div id="posts">
