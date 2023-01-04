@@ -1,14 +1,7 @@
     
-         <?php include('variables.php'); ?>
-
-                 <?php
-                include_once('connexion.php');
-                $sqlQuery = 'SELECT * FROM account';
-                $accountStatement = $mysqlClient->prepare($sqlQuery);
-                $accountStatement->execute();
-                $accounts = $accountStatement->fetchAll();
-            ?>
-          
+<?php 
+include_once('connexion.php');
+?>  
            <header>
                 <div id="logo">
                    <img src="images/logo_gbaf.png" alt="Logo de GBAF" />
@@ -18,7 +11,9 @@
                         <img src="images/profil.png" alt="Photo de profil" class="profil" />
    
                          <p> <label for="username"></label>
-                                <input type="text" name="username" id="username" placeholder= "username" <?php echo $account="username"; ?> size="70" maxlength="40" />
+                                <input type="text" name="username" id="username" placeholder= "username" size="40" maxlength="10" />
+                                
+                            
                                 </p>   
                         
                     </div>
