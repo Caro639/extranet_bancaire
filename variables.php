@@ -59,6 +59,14 @@
         ]
         ];
 
+     $post = [
+        [
+            'id_user' => 'username',
+            'id_acteur' => '',
+            'date_add' => '',
+            'post' => '',
+        ]
+    ];
 
 
     $vote = [

@@ -3,60 +3,67 @@
 //include_once('verification.php');
 //include('variables.php'); 
 
-if(isset($_POST['post']) && !empty($_POST['post'])); {
+if (isset($_POST['post']) && !empty($_POST['post'])); {
     $post = htmlspecialchars($_POST['post']);
-    $id_user = $_SESSION['id_user']; 
+    $id_user = $_SESSION['id_user'];
     $id_acteur = htmlspecialchars($_GET['id']);
     $date_add = date("Y/m/d");
-    if ($post !== "") { 
-        
+    if ($post !== "") {
+
         $sqlQuery = 'INSERT INTO post(id_user, id_acteur, date_add, post) VALUES (:id_user, :id_acteur, :date_add, :post)';
         $postStatement = $mysqlClient->prepare($sqlQuery);
-        $postStatement ->execute(array(
+        $postStatement->execute(array(
             ':id_user' => $id_user,
             ':id_acteur' => $id_acteur,
             ':date_add' => $date_add,
             ':post' => htmlspecialchars($post),
         ));
-        header('Location: index.php');
-          //  $postStatement = $post;
-        //$post = 'Commentaire envoyé';
-    
-        }
     }
-    ?> 
+}
+$post = $_POST['post'];
+?>
 
-/*
-    
-    acteur.php?id= . $id_acteur
-    $id_user = $mysqlClient -> lastInsertId($id_user);
-        $id_acteur = $mysqlClient -> lastInsertId($id_acteur);
-    
-    $id_acteur = filter_var($_GET['id'], FILTER_VALIDATE_INT);
-        $id_user = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+<!DOCTYPE html>
+<html>
 
-    $sqlQuery = 'INSERT INTO post SELECT (post, date_add) LEFT JOIN account WHERE post.id_user = account.id_user  id_acteur=:idActeur VALUES (:post, :date_add)';
-    $queryStatement = $mysqlClient->prepare($sqlQuery);
-    $queryStatement->execute(array(':post' => $post,)); 
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>GBAF</title>
+</head>
+
+<body>
+    <div id="bloc_page">
+        <!-- creation d'un formulaire pour commenter un acteur -->
+
+        <?php include('header.php'); ?>
+        <div id="container">
+            <form action="index.php" method="POST">
+                <h1>Votre commentaire a bien été pris en compte</h1>
+
+                <label><b>Votre commentaire</b></label>
+                <input type="text" placeholder=<?php echo strip_tags($post); ?> name="post" size="100%">
+
+                <input type="submit" id='submit' value='PAGE ACCUEIL'>
+            </form>
+        </div>
+        <!-- footer -->
+        <?php include('footer.php'); ?>
+
+</body>
+
+</html>
 
 
 
 
-':post' => $post,)
-
-$sqlQuery = 'SELECT * FROM post LEFT JOIN account ON post.id_user = account.id_user WHERE id_acteur=:idActeur;';
-    $queryStatement = $mysqlClient->prepare($sqlQuery);
-    $queryStatement->execute(array(
-        ':idActeur' => $idActeur,
-    ));
-    $posts = $queryStatement->fetchAll();
 
 
-include('fonctions.php');
-username' => $username,'idActeur' => $idActeur,
-':post' => $post,
-, :date_ad(date(string $format [,int $timestamp = time(void)
-$dateAdd = $timestamp;
 
-'username' => $username, 'idActeur' => $idActeur,
-*/
+
+
+
+header ('style=color:red : Commentaire bien reçu !');
+header('Location: index.php');
+// $postStatement = $post;
+//$post = 'Commentaire envoyé'

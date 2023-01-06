@@ -1,18 +1,19 @@
 <?php
-    include_once('connexion.php');
+include_once('connexion.php');
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css" />
-        <title>GBAF</title>
-    </head>
 
-    <body>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>GBAF</title>
+</head>
+
+<body>
     <?php include('header.php'); ?>
-        <div id="container">
+    <div id="container">
 
         <form action="verifcompte.php" method="POST">
             <h1>Créer un compte</h1>
@@ -37,14 +38,15 @@
 
             <input type="submit" id='submit' value='VALIDER'>
             <?php
-            if(isset($_GET['erreur'])){
+            if (isset($_GET['erreur'])) {
                 $err = $_GET['erreur'];
-                if($err==1 || $err==2)
-                echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                if ($err == 1 || $err == 2)
+                    echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
             }
             ?>
-            </form>
-            <a href="connecter.php">Se connecter</a>
- 
-    </body>
+        </form>
+        <a href="connecter.php">Se connecter</a>
+
+</body>
+
 </html>
