@@ -19,6 +19,7 @@
         <div id="partenaire">
             <?php
             include_once('connexion.php');
+           
             $idActeur = filter_var($_GET['id'], FILTER_VALIDATE_INT);
             $sqlQuery = 'SELECT * FROM acteur WHERE id_acteur=:idActeur;';
             $acteurStatement = $mysqlClient->prepare($sqlQuery);
@@ -45,10 +46,21 @@
                 <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?>
                 <button><a href="post.php?id=<?php echo $id ?>" type="href" class="btn btn-primary">Nouveau<br />commentaire</a></button>
 
-                <?php $votes = 1 ?>
-                <button><a href="action.php?id=1&votes=<?php echo $votes ?>"><img src="images/like.png" id=like /></a></button> (15) (<?= $votes ?>)
 
-                <button><a href="action.php?id=2&votes=<?php echo $votes ?>"><img src="images/dislike.png" id=dislike /></a></button> (2) (<?= $votes ?>)
+                <?php
+                $idActeur = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+                $id_vote = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+                $sqlQuery = 'SELECT vote FROM vote LEFT JOIN account ON vote.id_user = account.id_user WHERE id_acteur=:idActeur';
+                $queryStatement = $mysqlClient->prepare($sqlQuery);
+                $queryStatement->execute(array(
+                    ':idActeur' => $idActeur,
+                    ));
+                $row = $queryStatement -> fetchAll();
+                ?>
+                <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?>
+                <button><a href="action.php?id=<?php echo $id ?>"><img src="images/like_dislike.png" id=like />like<br />dislike</a></button>(<? echo (count($row)) ?>)
+                <p>Nombre de votes <span>(<? echo (count($row)) ?>)</span></p>
+                <button><a href="index.php" type="href" class="btn btn-primary">Retour<br />Page Acteurs</a></button>
 
             </div>
             <div id="posts">

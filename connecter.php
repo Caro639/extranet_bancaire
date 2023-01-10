@@ -33,7 +33,8 @@
             }
             ?>
             </form>
-            <a href="inscription.php">Créer un compte</a>
+            <button><a href="inscription.php">Créer un compte</a></button>
+            <button>Mot de passe oublié</button>
  
     </body>
 </html>

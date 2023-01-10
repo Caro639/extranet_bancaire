@@ -27,7 +27,8 @@
         }
         ?>
         <a href='index.php?deconnexion=true'><span>Se déconnecter</span></a>
-
+    </br>
+        <button><a href='compte.php'><span>Mon compte</span></a></button>
         <?php
         $sqlQuery = 'SELECT * FROM acteur';
         $acteurStatement = $mysqlClient->prepare($sqlQuery);
@@ -39,7 +40,7 @@
             <h1>Groupement Banque Assurance Français</h1>
             <br />
             <p>
-                Le GBAF est une fédération représentant les six grands groupes français :
+                Le GBAF est une fédération représentant les six grands groupes français:
                 <br />
                 Le Groupement Banque Assurance Français est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation finançière française. Sa mission est de promouvoir l'activité bancaire à l'échelle nationale.
             </p>
@@ -74,10 +75,13 @@
                     <h2><?php echo $acteur['acteur']; ?></h2>
 
                     <p><img src="images/<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>" /></p>
-                    <p><?php echo $acteur['description']; ?></p>
-                    <p><a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>" class="button">Lire la suite</a></p>
-                <?php } ?>
-
+                    
+                    <?php $acteur['description'] =  substr($acteur['description'], 0, 102); ?>
+                    <p><?php echo substr($acteur['description'], 0, 102,); ?></p>
+                    
+                    <p><button><a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>" class="button">Lire la suite</a></button></p>
+                    <?php } ?>
+            
 
             </div>
         </section>

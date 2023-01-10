@@ -18,9 +18,11 @@ if (isset($_POST['post']) && !empty($_POST['post'])); {
             ':date_add' => $date_add,
             ':post' => htmlspecialchars($post),
         ));
+
     }
+    
 }
-$post = $_POST['post'];
+    
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +40,9 @@ $post = $_POST['post'];
 
         <?php include('header.php'); ?>
         <div id="container">
-            <form action="index.php" method="POST">
-                <h1>Votre commentaire a bien été pris en compte</h1>
+        <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?>
+            <form action= "acteur.php?id=<?php echo $id ?>" method="POST">
+                <h1>Votre commentaire a bien été pris en compte. Merci !</h1>
 
                 <label><b>Votre commentaire</b></label>
                 <input type="text" placeholder=<?php echo strip_tags($post); ?> name="post" size="100%">
@@ -53,17 +56,3 @@ $post = $_POST['post'];
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-header ('style=color:red : Commentaire bien reçu !');
-header('Location: index.php');
-// $postStatement = $post;
-//$post = 'Commentaire envoyé'

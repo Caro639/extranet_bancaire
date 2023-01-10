@@ -10,8 +10,17 @@ body
 	color: black;
 }
 
+@media all and (max-width: 1024px)
+{
+    #bloc_page
+    {
+        width:  auto;
+    }
+}
+
 header
 {
+	width: auto;
 	background-color: whitesmoke;
 	border-bottom: 5px rgb(255, 0, 0) solid;
 	display: flex;
@@ -21,6 +30,7 @@ header
 
 #profil
 {
+	width: auto;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -35,6 +45,7 @@ header
 
 #logo
 {
+	width: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -43,23 +54,55 @@ header
 
 #logo
 {
+	width: auto;
 	width: 80px;
 	height: 80px;
 }
 
-#commentaire a
+
+#commentaire
 {
 	display: flex;
 	flex-direction: row;
-	justify-content: baseline;
+	justify-content: space-around;
+	align-items: stretch;
+}
+
+#posts 
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: auto;
+	text-align: justify;
+	overflow: auto;
+	word-wrap: break-word;
+}
+
+#posts p
+
+{
+	background-color: whitesmoke;
 }
 
 section
 {
+	min-width: 50%;
+	max-width: 100%;
+	max-height: 100%;
+	min-height: 50%;
 	width: 900px;
 	margin: auto;
 	margin-top: 25px;
 	padding: 10px;
+}
+
+section p
+{
+	margin: auto;
+	text-align: justify;
+	overflow: auto;
+	word-wrap: break-word;
 }
 
 h1
@@ -74,14 +117,34 @@ h1
 
 #groupes_bancaires
 {
+	min-width: 50%;
+	max-width: 100%;
+	max-height: 100%;
+	min-height: 50%;
+	margin: auto;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	border: rgb(255, 0, 0) solid;
 	background-color: whitesmoke;
 }
 
+@media all and (max-width: 1024px)
+{
+#groupes_bancaires img
+{
+	min-width: 10%;
+	max-width: 100%;
+	max-height: 100%;
+	min-height: 10%;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+}
 h2
 {
 	background-color: rgb(255, 0, 0);	
@@ -103,8 +166,33 @@ h3
 	background-color: whitesmoke;
 }
 
+button
+{
+	border: rgb(255, 0, 0) solid 2px;
+	background-color: whitesmoke;
+}
+
+#posts 
+{
+	display: flex;
+	margin-bottom: 20px;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: auto;
+	text-align: justify;
+	overflow: auto;
+	word-wrap: break-word;
+	background-color: whitesmoke;
+}
+
+i
+{
+	background-color: silver;
+}
+
 footer
 {
+	width: auto;
 	background-color: whitesmoke;
 	border-top: 5px rgb(255, 0, 0) solid;
 	display: flex;
@@ -125,13 +213,10 @@ h3
 	background-color: rgb(255, 0, 0);
 }
 
-#posts p
-{
-	border: black solid 1px;
-}
-
 #container
 {
+	max-height: 100%;
+	min-width: 10%;
 	width: 900px;
 	margin: 0 auto;
 	margin-top: 10%;
@@ -140,7 +225,8 @@ h3
 
 form
 {
-	width: 100%;
+	max-width: 100%;
+	min-width: 10%;
 	padding: 30px;
 	border: 1px solid rgb(255, 0, 0);
 	background: rgb(255, 0, 0);
@@ -149,7 +235,8 @@ form
 
 #container h1
 {
-	width: 38%;
+
+	max-width: 38%;
 	margin: 0 auto;
 	padding-bottom: 10px;
 }
@@ -169,10 +256,10 @@ input[type=submit]
 	background-color:  whitesmoke;
 	color: rgb(255, 0, 0);
 	padding: 14px 20px;
-	margin: 8px 0;
+	margin: 8px 200px;
 	border: none;
 	cursor: pointer;
-	width: 100%;
+	width: 50%;
 }
 
 input[type=submit]:hover

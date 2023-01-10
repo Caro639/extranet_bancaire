@@ -47,17 +47,25 @@
             'password' => 'admin14',
             'question' => 'Quel est mon animal domestique ?',
             'reponse' => 'Chien',
-        ]
+        ],
+
+        [
+            'id_user' => '',
+            'nom' => '',
+            'prenom' => '',
+            'username' => '',
+            'password' => '',
+            'question' => '',
+            'reponse' => '',
+        ],
     ];
 
     $_POST = [
-        [
-            'id_user' => 'username',
+        'id_user' => 'username',
             'id_acteur' => '',
             'date_add' => '',
             'post' => '',
-        ]
-        ];
+    ];
 
      $post = [
         [
@@ -71,11 +79,20 @@
 
     $vote = [
         [
-            'id_user' => '1',
+            'id_user' => 'id_user',
+            'id_acteur' => '',
             'vote' => '',
-            'id_acteur' => '1',
         ],
     ];
+
+    $_POST = [
+        [ 
+            'id_user' => 'id_user',
+            'id_acteur' => '',
+            'vote' => '',
+        ]
+    ];
+
 
     ?>
 

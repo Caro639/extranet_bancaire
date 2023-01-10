@@ -16,7 +16,7 @@ if ((isset($_POST['nom']) && !empty($_POST['nom'])) && (isset($_POST['prenom']) 
         $accountStatement->execute(array(':nom' => $nom, ':prenom' => $prenom, ':username' => $username, ':password' => $password, ':question' => $question, ':reponse' => $reponse,));
 
         $_SESSION['username'] = $username;
-        header('Location: index.php');
+        header('Location: connecter.php');
         $_SESSION = 'inscription réussie';
     } else {
         header('Location: connecter.php?erreur=1');

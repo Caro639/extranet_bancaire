@@ -1,7 +1,7 @@
 
 
 
-                      inscription.php => verifcompte.php = inscription
+                      inscription.php => verifcompte.php = inscription => page se connecter
 `                                      |
                                        |
                                        |
@@ -9,16 +9,16 @@
                                        |
                                        |  
                                        | 
-                                       |
+                                page compte utilisateur
                                        |
                                index.php = page principale
                                        |
                                        |
                                        |
                                        |
-post.php = écrire un commentaire----acteur.php ---------liens like-dislike
+post.php <= formulaire commentaire----acteur.php ---------liens like-dislike
               |                                                    |                             
+              |                                                    |like formulaire avis
               |                                                    |
-              |                                                    |
-   submit_post.php = verifier post                          action.php = get like
+   submit_post.php = verifier post                          action.php = get avis =>
 
