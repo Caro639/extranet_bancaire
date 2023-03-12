@@ -15,10 +15,11 @@
 
         <?php include_once('connexion.php'); ?>
         <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?>
-        <form action="like.php?id=<?php echo $id ?>" method="POST">
+            <form action="like.php?id=<?php echo $id ?>" method="POST">
+
             <h1>Donnez un avis</h1>
 
-            <label><b>Votre avis !</b></label>
+                <label><b>Votre avis !</b></label>
             <input type="text" placeholder="Donnez votre avis professionnel et constructif !" name="vote" required>
 
             <input type="submit" id='submit' value='ENVOYER'>
@@ -30,7 +31,5 @@
             }
             ?>
             </form>
-            <a href="index.php">Accueil</a>
- 
     </body>
 </html>
