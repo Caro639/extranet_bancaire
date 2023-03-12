@@ -5,7 +5,7 @@
 `                                      |
                                        |
                                        |
-                   connecter.php => verification.php = se connecter
+                   connecter.php => verification.php = se connecter ======> demande_mp =>modif_mp.php(mot de passe oublié =pseudo et reponse) => form_mp.php(modif mp formulaire)
                                        |
                                        |  
                                        | 
