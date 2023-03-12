@@ -12,7 +12,10 @@ include_once('connexion.php');
 </head>
 
 <body>
-    <?php include('header.php'); ?>
+    <div class="gbaf"><img src="images/logo_gbaf.png" alt="Logo de GBAF" />
+    <button><a href="connecter.php">Se connecter</a></button>
+    </div>
+   
     <div id="container">
 
         <form action="verifcompte.php" method="POST">
@@ -45,8 +48,6 @@ include_once('connexion.php');
             }
             ?>
         </form>
-        <a href="connecter.php">Se connecter</a>
-
 </body>
 
 </html>
