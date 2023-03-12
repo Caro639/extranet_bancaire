@@ -18,15 +18,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['username'] = $account['username'];
         $_SESSION['id_user'] = $account['id_user'];
 
-        setcookie(
-            'id_user',
-            [
-                'expires' => time() + 365 * 24 * 3600,
-                'secure' => true,
-                'httponly' => true,
-            ]
-        );
-
         header('Location: index.php');
     } else {
         header('Location: connecter.php?erreur=1');
