@@ -28,7 +28,7 @@
             ));
             $acteur = $acteurStatement->fetch();
             ?>
-            <h2><?php echo $acteur['acteur']; ?></h2>
+            <h1><?php echo $acteur['acteur']; ?></h1>
 
             <p>
                 <img src="images/<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>" />
@@ -40,12 +40,11 @@
     </section>
     <section>
         <article> <!--les commentaires-->
-            <h2>Commentaires</h2>
+            <h3>Commentaires</h3>
 
             <div id="commentaire">
-                <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?>
-                <button><a href="post.php?id=<?php echo $id ?>" type="href" class="btn btn-primary">Nouveau<br />commentaire</a></button>
 
+                    <a href="index.php" type="href" class="btn btn-primary"><img src="images/retour.png" alt="retour" id="retour"/></a>
 
                 <?php
                 $idActeur = filter_var($_GET['id'], FILTER_VALIDATE_INT);
@@ -58,10 +57,13 @@
                 $row = $queryStatement -> fetchAll();
                 ?>
                 <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?>
-                <button><a href="action.php?id=<?php echo $id ?>"><img src="images/like_dislike.png" id=like />like<br />dislike</a></button>(<? echo (count($row)) ?>)
-                <p>Nombre de votes <span>(<? echo (count($row)) ?>)</span></p>
-                <button><a href="index.php" type="href" class="btn btn-primary">Retour<br />Page Acteurs</a></button>
+                    <a href="action.php?id=<?php echo $id ?>"><img src="images/like.png" id=like /></a>(<? echo (count($row)) ?>)
+    
+                    <a href="action.php?id=<?php echo $id ?>"><img src="images/dislike.png" id=dislike /></a>(<? echo (count($row)) ?>)
 
+                    <?php $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); ?>
+                    <a href="post.php?id=<?php echo $id ?>" type="href" class="btn btn-primary" id="new">Nouveau<br />commentaire</a>
+                        
             </div>
             <div id="posts">
 
@@ -74,13 +76,16 @@
                 ));
                 $posts = $queryStatement->fetchAll();
                 ?>
+            
                 <?php foreach ($posts as $post) { ?>
                     <?php /* print_r($post); */ ?>
-                    <i><?php echo $post['username']; ?></i>
+                    <p><i><?php echo $post['username']; ?></i>
                     <i><?php echo $post['prenom']; ?></i>
-                    <i><?php echo $post['date_add']; ?></i>
-                    <p><?php echo $post['post']; ?></p>
+                    <i><?php echo $post['post']; ?></i>
+                    <i><?php echo $post['date_add']; ?></i><br /></p>
+                    
                 <?php } ?>
+            
             </div>
 
         </article>
