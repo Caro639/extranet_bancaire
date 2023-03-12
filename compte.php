@@ -2,41 +2,17 @@
 <?php include_once('connexion.php'); ?>
 <?php include_once('variables.php'); ?>
     
-    <?php
-      if (isset($_GET['connexion'])) {
-        if ($_GET['connexion'] == true) {
-        }
-    } else if ($_SESSION['username'] !== "") {
-        $username = $_SESSION['username'];
-        
-        echo " Bienvenue $username sur le site de la GBAF, vous pouvez modifier vos paramètres !";
-    }
-    ?>
-    <?php
+<?php if(isset($_SESSION['id_user']) && $_SESSION['id_user'] !== ''){ ?>
   
-    
-  $sqlQuery = 'SELECT username FROM account WHERE username';
-  $accountStatement = $mysqlClient->prepare($sqlQuery);
-  $accountStatement->execute(array(
-    ':username' => $username,));
-  $account = $accountStatement->fetchAll();
-  
-?>
-
-<?php 
-        $sqlQuery = 'SELECT nom, prenom, username, password, question, reponse FROM account WHERE username=:username AND nom=:nom AND prenom=:prenom AND password=:password AND question=:question AND reponse=:reponse';
+    <?php
+        $sqlQuery = 'SELECT * FROM account WHERE username=:username ';
         $accountStatement = $mysqlClient->prepare($sqlQuery);
-        $accountStatement -> execute(array(
-            ':nom' => $nom,
-            ':prenom' => $prenom,
-            ':username' => $username,
-            ':password' => $password,
-            ':question' => $question,
-            ':reponse' => $reponse,
+        $accountStatement->execute(array(
+            ':username' => $_SESSION['username'],
         ));
-        $accounts = $accountStatement ->fetchAll();
+        $account = $accountStatement->fetch(); 
+    } 
 ?>
-
         
 <!DOCTYPE html>
 <html>
@@ -52,26 +28,26 @@
 
         <?php include('header.php'); ?>
 
-        <a href='index.php?deconnexion=true'><span>Se déconnecter</span></a>
         <section>
+            
             <div id="compte">
-
                 <h2>Paramétres de votre compte</h2>
-
-                <nav>
+                    <a href="index.php" type="href" class="btn btn-primary"><img src="images/retour.png" alt="retour" id="retour"/></a>
                     <ul>
-                    
-                    <?php foreach ($accounts as $account); {  ?>
-                
-                        <p><a href="#">Votre nom: <?php echo $nom ?></a></p>
-                        <li><a href="#">Votre prénom: <?php echo $prenom ?></a></li>
-                        <li><a href="#">Votre pseudo: <?php echo $username ?></a></li>
-                        <li><a href="#">Votre mot de passe: <?php echo $password ?></a></li>
-                        <li><a href="#">Votre question secrète: <?php echo $question ?></a></li>
-                        <li><a href="#">Votre réponse: <?php echo $reponse ?></a></li>
-                        <?php } ?>
-                </nav>
-                <button><a href="index.php" type="href" class="btn btn-primary">Retour<br />Page Acteurs</a></button>
+                        <label>Votre nom: <?php echo $account['nom'] ?>
+                        <input type="text" name="nom" value="<?php echo $account['nom'] ?>" required>
+                        <label>Votre prénom: <?php echo $account['prenom'] ?></label>
+                        <input type="text" name="prenom" value="<?php echo $account['prenom'] ?>" required>
+                        <label>Votre pseudo: <?php echo $account['username'] ?></label>
+                        <input type="text" name="username" value="<?php echo $account['username'] ?>" required>
+                        <label>Votre mot de passe: <?php echo $account['password'] ?></label>
+                        <input type="text" name="password" value="<?php echo $account['password'] ?>" required>
+                        <label>Votre question secrète: <?php echo $account['question'] ?></label>
+                        <input type="text" name="question" value="<?php echo $account['question'] ?>" required>
+                        <label>Votre réponse: <?php echo $account['reponse'] ?></label>
+                        <input type="text" name="reponse" value="<?php echo $account['reponse'] ?>" required>
+                    </ul>
+            
             </div>
     </div>
     <?php include('footer.php'); ?>
@@ -79,5 +55,3 @@
 </body>
 
 </html>
-
-<a href="inscription.php" type="href" class="btn btn-primary">Modifier votre nom</a></button>
