@@ -23,12 +23,10 @@
             }
         } else if ($_SESSION['username'] !== "") {
             $username = $_SESSION['username'];
-            echo " Bienvenue $username sur le site de la GBAF, vous êtes connectés !";
+            echo " Bienvenue $username sur le site de la GBAF!";
         }
         ?>
-        <a href='index.php?deconnexion=true'><span>Se déconnecter</span></a>
-    </br>
-        <button><a href='compte.php'><span>Mon compte</span></a></button>
+
         <?php
         $sqlQuery = 'SELECT * FROM acteur';
         $acteurStatement = $mysqlClient->prepare($sqlQuery);
@@ -67,19 +65,19 @@
                 </p>
             </div>
 
-            <div id="partenaires">
+            <div id="conteneur">
 
                 <?php include('variables.php'); ?>
                 
                 <?php foreach ($acteurs as $acteur) { ?>
-                    <h2><?php echo $acteur['acteur']; ?></h2>
+                    <h3><?php echo $acteur['acteur']; ?></h3>
 
-                    <p><img src="images/<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>" /></p>
+                    <div class="logo"><img src="images/<?php echo $acteur['logo']; ?>" alt="Logo <?php echo $acteur['acteur']; ?>" /></div>
+
+                    <?php $acteur['description'] =  substr($acteur['description'], 0, 135); ?>
+                    <div class="description"><?php echo substr($acteur['description'], 0, 135,); ?></div>
                     
-                    <?php $acteur['description'] =  substr($acteur['description'], 0, 102); ?>
-                    <p><?php echo substr($acteur['description'], 0, 102,); ?></p>
-                    
-                    <p><button><a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>" class="button">Lire la suite</a></button></p>
+                    <div class="suite"><a href="acteur.php?id=<?php echo $acteur['id_acteur']; ?>">Lire la suite</a></div>
                     <?php } ?>
             
 
