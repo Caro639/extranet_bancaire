@@ -26,14 +26,14 @@
                 <input type="text" placeholder="Ecrivez votre commentaire" name="post" size="100%" required>
 
                 <input type="submit" id='submit' value='ENVOYER'>
-                <?php
+            <?php
                 if (isset($_GET['erreur'])) {
                     $err = $_GET['erreur'];
                     if ($err == 1 || $err == 2)
                         echo "<p style='color:red'>Commentaire invalide</p>";
                 }
 
-                ?>
+            ?>
             </form>
         </div>
         <!-- footer -->
